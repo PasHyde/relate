@@ -1,1 +1,63 @@
 # relate
+
+Relate is open source python package to estimate the similarities between strings (texts) using k-shingling and string metrics. The package takes plain text file as input and return a symmetric matrix that can be used for hierachical clustering or phylogenetic analysis to ivestigate the relationships between different versions of a text. 
+
+The modules included in relate can be used together or separately.
+
+1. The shingle module divides or tokenizes the texts into shingles of character length k, specified by a user:
+```python
+from relate import shingle
+shingle.length = 2
+shingle = shingle.tokenize
+text = 'a fox jumps' 
+print(shingle(text))
+['th', 'he', 'e ', ' f', 'fo', 'ox', 'x ', ' j', 'ju', 'um', 'mp', 'ps']
+```
+
+2. The metrics module treats each text as a set and the shingles as elemements of a set. The similarity between the pairs of texts is estimated by using string metrics: Jaccard similarity coefficient, Sørensen_Dice, or Overlap coefficient.
+
+```python
+from relate import shingle, metrics
+shingle.length = 2
+text_1 = 'the fox jumps'
+text_2 = 'the fox waits'
+# User selects the preferable metrics from three options: 'jaccard', 'sørensen_dice', 'overlap'
+similarity = metrics.select['sørensen_dice']
+print(similarity(text_1, text_2))
+58.333333
+```
+
+3. The matrix module automatically arranges the estimated values as a symmetric matrix. The plain text files can be opened and arranged using the data_file module. All punctuation marks and capitals should be removed from the texts and the pronunciation standardized. The data should be arranged into the data_file module as following: 
+
+```python
+text_1 = 'the fox jumps'
+text_2 = 'the fox waits'
+text_3 = 'one fox jumps'
+text_4 = 'second fox waits'
+# Arrange all texts into two tuples:
+all_texts1 = (text_1,text_2,text_3,text_4)
+all_texts2 = (text_1,text_2,text_3,text_4)
+# Names or id's of the analyzed texts
+names = ('text_1','text_2','text_3','text_4')
+```
+
+The module returns similarity matrices (values taken directly from the string metrics), distance matrices (1-string metric) with or without standardizing function:
+![image](https://user-images.githubusercontent.com/79587588/114005450-38afd400-9868-11eb-97ff-dca35310751a.png) 
+estimated value - mean / standard deviation
+
+```python
+from relate import shingle, metrics, matrix, data_file
+texts1 = data_file.all_texts1
+texts2 = data_file.all_texts2
+shingle.length = 2
+similarity = metrics.select['sørensen_dice']
+# Without standardizing function: 'similarity','distance'. With the function: 'st_similarity', 'st_distance' 
+matrix = matrix.select['similarity']
+print(matrix(similarity,texts1, texts2))
+>>>
+           text_1      text_2      text_3      text_4
+text_1  100.000000   58.333333   83.333333   29.629630
+text_2   58.333333  100.000000   41.666667   66.666667
+text_3   83.333333   41.666667  100.000000   37.037037
+text_4   29.629630   66.666667   37.037037  100.000000
+```
