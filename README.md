@@ -63,7 +63,7 @@ text_3  16.666667  58.333333   0.000000  62.962963
 text_4  70.370370  33.333333  62.962963   0.000000
 
 ```
-This is a clear way to organize and visualize the data. We can easily manipulate the matrix so that the only the upper half is printed:
+This is a clear way to organize and visualize the data. However, one may wish to manipulate the output. For instance, some require the upper half of the matrix only:
 
 ```python
 import numpy as np
