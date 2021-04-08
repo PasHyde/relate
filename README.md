@@ -15,7 +15,7 @@ print(shingle(text))
 ['th', 'he', 'e ', ' f', 'fo', 'ox', 'x ', ' j', 'ju', 'um', 'mp', 'ps']
 ```
 
-The metrics module treats each text as a set and the shingles as elemements of a set. The similarity between the pairs of texts is estimated by using string metrics: Jaccard similarity coefficient, Sørensen_Dice, or Overlap coefficient. More information about the used string metrics, see [here](https://effectivesoftwaredesign.com/2019/02/27/data-science-set-similarity-metrics/)
+The metrics module treats each text as a set and the shingles as elemements of a set. The similarity between the pairs of texts is estimated by using string metrics: Jaccard similarity coefficient, Sørensen_Dice, or Overlap coefficient. For more information about the used string metrics, see [here](https://effectivesoftwaredesign.com/2019/02/27/data-science-set-similarity-metrics/).
 
 ```python
 from relate import shingle, metrics
