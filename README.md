@@ -42,7 +42,7 @@ all_texts2 = (text_1,text_2,text_3,text_4)
 names = ('text_1','text_2','text_3','text_4')
 ```
 
-The module returns similarity matrices (values taken directly from the string metrics), distance matrices (1-string metric) with or without standardizing function:
+The module returns a similarity matrix (values taken directly from the string metrics), a distance matrix (1-string metric) with or without standardizing function:
 ![image](https://user-images.githubusercontent.com/79587588/114005450-38afd400-9868-11eb-97ff-dca35310751a.png) 
 estimated value - mean / standard deviation
 
