@@ -52,12 +52,44 @@ texts2 = data_file.all_texts2
 shingle.length = 2
 similarity = metrics.select['sørensen_dice']
 # Without standardizing function: 'similarity','distance'. With the function: 'st_similarity', 'st_distance' 
-matrix = matrix.select['similarity']
-print(matrix(similarity,texts1, texts2))
->>>
-           text_1      text_2      text_3      text_4
-text_1  100.000000   58.333333   83.333333   29.629630
-text_2   58.333333  100.000000   41.666667   66.666667
-text_3   83.333333   41.666667  100.000000   37.037037
-text_4   29.629630   66.666667   37.037037  100.000000
+matrix = matrix.select['distance']
+result = matrix(similarity,texts1, texts2)
+print(result)
+            text_1     text_2     text_3     text_4
+text_1   0.000000  41.666667  16.666667  70.370370
+text_2  41.666667   0.000000  58.333333  33.333333
+text_3  16.666667  58.333333   0.000000  62.962963
+text_4  70.370370  33.333333  62.962963   0.000000
+
 ```
+This is a clear way to organize and visualize the data. We can easily manipulate the matrix so that the only the upper half is printed:
+
+```python
+import numpy as np
+print(np.triu(result))
+[[ 0.       41.666667 16.666667 70.37037 ]
+ [ 0.        0.       58.333333 33.333333]
+ [ 0.        0.        0.       62.962963]
+ [ 0.        0.        0.        0.      ]]
+```
+Or we can print the data as condensed matrix using scipy:
+
+```python
+import scipy.spatial.distance as ssd
+result = ssd.squareform(result)
+print(result)
+[41.666667 16.666667 70.37037  58.333333 33.333333 62.962963]
+```
+
+This can be used, for instance, as input to scipy hierarchical clustering algorithms: 
+
+```python
+from matplotlib import pyplot as plt
+import scipy.cluster.hierarchy as sch
+
+dendrogram = sch.dendrogram(sch.linkage(result, method='ward'), labels = names, leaf_font_size= 10, orientation = 'top',
+                      color_threshold = 2, leaf_rotation=45)
+plt.show()
+```
+![image](https://user-images.githubusercontent.com/79587588/114025796-3193c080-987e-11eb-84c5-fb224ca04662.png)
+
