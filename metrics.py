@@ -6,8 +6,8 @@ from relate import shingle
 Functions return a similarity value between a pair of strings (texts) using three different string similarity metrics:
 Jaccard similarity coefficient, Sørensen_Dice, and Overlap coefficient.
 '''
-# Call shingle function to tokenize the strings
-shingle = shingle.shingle
+# Call tokenize function to shingle the strings
+shingle = shingle.tokenize
 
 def jaccard_similarity_coefficient(string_a, string_b):
     '''
@@ -86,7 +86,7 @@ def overlap_coefficient(string_a, string_b):
     return overlap_coefficient_similarity
     
 # Use dictionary to call the functions
-metrics = {
+select= {
     'jaccard': jaccard_similarity_coefficient,
     'sørensen_dice': sørensen_dice,
     'overlap': overlap_coefficient

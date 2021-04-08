@@ -2,7 +2,7 @@
 # Assign the length of the shingles
 length = 4
 
-def shingle(string):
+def tokenize(string):
     '''
     Function to divide a string (text) into shingles.
 
