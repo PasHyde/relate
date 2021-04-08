@@ -82,7 +82,7 @@ print(result)
 [41.666667 16.666667 70.37037  58.333333 33.333333 62.962963]
 ```
 
-This can be used as input to scipy hierarchical clustering algorithms: 
+This, on the other hand, can be used as input in scipy hierarchical clustering algorithms: 
 
 ```python
 from matplotlib import pyplot as plt
