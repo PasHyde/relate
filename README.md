@@ -1,6 +1,6 @@
 # relate
 
-Relate is open source python package to estimate the similarities between strings (texts) using k-shingling and string metrics. The package takes plain text file as input and return a symmetric matrix that can be used for hierachical clustering or phylogenetic analysis to ivestigate the relationships between different versions of a text. 
+Relate is open source python package to estimate the similarities between strings (texts) using k-shingling and string metrics. It takes plain text file as input and return a symmetric matrix that can be used for hierachical clustering or phylogenetic analysis to ivestigate the relationships between different versions of a text. 
 
 The modules included in relate can be used together or separately.
 
