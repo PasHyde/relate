@@ -4,7 +4,8 @@ Relate is open source python package to estimate the similarities between string
 
 The modules included in relate can be used together or separately.
 
-1. The shingle module divides or tokenizes the texts into shingles of character length k, specified by a user:
+The shingle module divides or tokenizes the texts into shingles of character length k, specified by a user:
+
 ```python
 from relate import shingle
 shingle.length = 2
@@ -14,7 +15,7 @@ print(shingle(text))
 ['th', 'he', 'e ', ' f', 'fo', 'ox', 'x ', ' j', 'ju', 'um', 'mp', 'ps']
 ```
 
-2. The metrics module treats each text as a set and the shingles as elemements of a set. The similarity between the pairs of texts is estimated by using string metrics: Jaccard similarity coefficient, Sørensen_Dice, or Overlap coefficient.
+The metrics module treats each text as a set and the shingles as elemements of a set. The similarity between the pairs of texts is estimated by using string metrics: Jaccard similarity coefficient, Sørensen_Dice, or Overlap coefficient.
 
 ```python
 from relate import shingle, metrics
@@ -27,7 +28,7 @@ print(similarity(text_1, text_2))
 58.333333
 ```
 
-3. The matrix module automatically arranges the estimated values as a symmetric matrix. The plain text files can be opened and arranged using the data_file module. All punctuation marks and capitals should be removed from the texts and the pronunciation standardized. The data should be arranged into the data_file module as following: 
+The matrix module automatically arranges the estimated values as a symmetric matrix. The plain text files can be opened and arranged using the data_file module. All punctuation marks and capitals should be removed from the texts and the pronunciation standardized. The data should be arranged into the data_file module as following: 
 
 ```python
 text_1 = 'the fox jumps'
