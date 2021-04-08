@@ -38,7 +38,7 @@ text_4 = 'second fox waits'
 # Arrange all texts into two tuples:
 all_texts1 = (text_1,text_2,text_3,text_4)
 all_texts2 = (text_1,text_2,text_3,text_4)
-# Names or id's of the analyzed texts
+# Names or IDs of the analyzed texts
 names = ('text_1','text_2','text_3','text_4')
 ```
 
