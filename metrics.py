@@ -104,7 +104,7 @@ def hamming_similarity(string_a, string_b):
 	'''
     hamming = sum(x == y for x, y in zip(string_a, string_b)) / len(text_1) * 100
     if len(text_1) == len(text_2):
-        return hamming_distance
+        return ("%.6f" % (hamming_distance))
     else:
         print('error: strings must be of equal length')
     
