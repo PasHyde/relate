@@ -3,8 +3,8 @@
 from relate import shingle
 
 '''
-Functions return a similarity value between a pair of strings (texts) using different string similarity metrics:
-Jaccard similarity coefficient, Sørensen_Dice, Overlap coefficient and Hamming similarity.
+Functions return a similarity value between a pair of strings (texts) using three different string similarity metrics:
+Jaccard similarity coefficient, Sørensen_Dice, and Overlap coefficient.
 '''
 # Call tokenize function to shingle the strings
 shingle = shingle.tokenize
@@ -84,18 +84,18 @@ def overlap_coefficient(string_a, string_b):
     # Return 6 digit float ranging between 0-100 (overlap coefficient ranges between 0-1 by default)
     overlap_coefficient_similarity = ("%.6f" % ((intersection / smaller_set) * 100))
     return overlap_coefficient_similarity
-
+    
 
 def hamming_similarity(string_a, string_b):
-	'''
-	Function returns the Hamming similarity between two strings.
+    '''
+    Function returns the Hamming similarity between two strings.
 	
-	Hamming similarity between two equal-length strings is the number of positions at which the corresponding characters are the same. For example:
-	string_a = 'manuscript'
-	string_b = 'autoscript'
-	hamming_similarity = 6
+    Hamming similarity between two equal-length strings is the number of positions at which the corresponding characters are the same. For example:
+    string_a = 'manuscript'
+    string_b = 'autoscript'
+    hamming_similarity = 6
 	
-	Parameters:
+    Parameters:
     string_a : first string (text)
     string_b : second string (text)
 
@@ -112,6 +112,6 @@ def hamming_similarity(string_a, string_b):
 select= {
     'jaccard': jaccard_similarity_coefficient,
     'sørensen_dice': sørensen_dice,
-    'overlap': overlap_coefficient
+    'overlap': overlap_coefficient,
     'hamming': hamming_similarity
     }
