@@ -1,6 +1,7 @@
 
 
 from relate import shingle
+import sys
 
 '''
 Functions return a similarity value between a pair of strings (texts) using three different string similarity metrics:
@@ -11,7 +12,7 @@ shingle = shingle.tokenize
 
 def jaccard_similarity_coefficient(string_a, string_b):
     '''
-    Function returns the Jaccard similarity coefficient between two strings. 
+    Function returns the Jaccard similarity coefficient between two strings.
 
     Texts are divided (tokenized) into shingles of character length k (default shingle.length = 4) and treated as elements of a set.
     The tokenized strings are converted to sets and the Jaccard similarity coefficient calculated:
@@ -89,24 +90,24 @@ def overlap_coefficient(string_a, string_b):
 def hamming_similarity(string_a, string_b):
     '''
     Function returns the Hamming similarity between two strings.
-	
+    
     Hamming similarity between two equal-length strings is the number of positions at which the corresponding characters are the same. For example:
     string_a = 'manuscript'
     string_b = 'autoscript'
     hamming_similarity = 6
-	
+    
     Parameters:
     string_a : first string (text)
     string_b : second string (text)
 
     Returns:
     float: hamming_similarity / number of characters in either strings * 100 = hamming_similarity in %.
-	'''
-    hamming = sum(x == y for x, y in zip(string_a, string_b)) / len(text_1) * 100
-    if len(text_1) == len(text_2):
-        return ("%.6f" % (hamming_distance))
+    '''
+    hamming = sum(x == y for x, y in zip(string_a, string_b)) / len(string_a) * 100
+    if len(string_a) == len(string_b):
+        return ("%.6f" % (hamming))
     else:
-        print('error: strings must be of equal length')
+        sys.exit("error: strings must be of equal length")
     
 # Use dictionary to call the functions
 select= {
