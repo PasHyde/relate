@@ -103,11 +103,14 @@ def hamming_similarity(string_a, string_b):
     Returns:
     float: hamming_similarity / number of characters in either strings * 100 = hamming_similarity in %.
     '''
-    hamming = sum(x == y for x, y in zip(string_a, string_b)) / len(string_a) * 100
-    if len(string_a) == len(string_b):
-        return ("%.6f" % (hamming))
-    else:
+    if len(string_a) != len(string_b):
         sys.exit("error: strings must be of equal length")
+    zipped = list(zip(string_a, string_b))
+    ignore = ('?')
+    [[zipped.remove(subl) for m in ignore if m in subl]for subl in zipped[:]]
+    agreements = sum(x == y for x, y in zipped)
+    hamming = ("%.6f" % (agreements / len(zipped) *100))
+    return hamming
     
 # Use dictionary to call the functions
 select= {
