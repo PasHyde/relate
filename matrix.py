@@ -20,7 +20,8 @@ def similarity_matrix(metrics, all_texts1, all_texts2):
     Parameters:
     metrics: 'jaccard' (jaccard_similarity_coefficient),
              'sørensen_dice' (sørensen_dice coefficient),
-             'overlap' (overlap_coefficient)
+             'overlap' (overlap_coefficient),
+             'hamming' (hamming similarity)
     all_texts1: first tuple (tokenized strings stored in the items of the tuple)
     all_texts2: second tuple (tokenized strings stored in the items of the tuple)
 
@@ -45,7 +46,8 @@ def distance_matrix(metrics, all_texts1, all_texts2):
     Parameters:
     metrics: 'jaccard' (jaccard_similarity_coefficient),
              'sørensen_dice' (sørensen_dice coefficient),
-             'overlap' (overlap_coefficient)
+             'overlap' (overlap_coefficient),
+             'hamming' (hamming similarity)
     all_texts1: first tuple (tokenized strings stored in the items of the tuple)
     all_texts2: second tuple (tokenized strings stored in the items of the tuple)
 
@@ -70,7 +72,8 @@ def standardized_similarity_matrix(metrics, all_texts1, all_texts2):
     Parameters:
     metrics: 'jaccard' (jaccard_similarity_coefficient),
              'sørensen_dice' (sørensen_dice coefficient),
-             'overlap' (overlap_coefficient)
+             'overlap' (overlap_coefficient),
+             'hamming' (hamming similarity)
     all_texts1: first tuple (tokenized strings stored in the items of the tuple)
     all_texts2: second tuple (tokenized strings stored in the items of the tuple)
 
@@ -111,7 +114,8 @@ def standardized_distance_matrix(metrics, all_texts1, all_texts2):
     Parameters:
     metrics: 'jaccard' (jaccard_similarity_coefficient),
              'sørensen_dice' (sørensen_dice coefficient),
-             'overlap' (overlap_coefficient)
+             'overlap' (overlap_coefficient),
+             'hamming' (hamming similarity)
     all_texts1: first tuple (tokenized strings stored in the items of the tuple)
     all_texts2: second tuple (tokenized strings stored in the items of the tuple)
 
