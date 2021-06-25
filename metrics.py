@@ -103,15 +103,19 @@ def hamming_similarity(string_a, string_b):
     Returns:
     float: hamming_similarity / number of characters in either strings * 100 = hamming_similarity in %.
     '''
-    if len(string_a) != len(string_b):
-        sys.exit("error: strings must be of equal length")
+    # Check whether the strings are of egual length
+    [a if len(string_a) == len(string_b) else sys.exit("error: strings must be of equal length") for a in (string_a, string_b)]
+    # Pair each character together from the two strings
     zipped = list(zip(string_a, string_b))
-    ignore = ('?')
+    # Ignore quoestion marks and the character that are paired with it (a user can insert here whatever characters or symbols one wishes to ignore from the strings)
+    ignore = '?'
     [[zipped.remove(subl) for m in ignore if m in subl]for subl in zipped[:]]
+    # Sum up all the characters that are the same in both strings (agreements)
     agreements = sum(x == y for x, y in zipped)
+    # Calculate the hamming distance (agreements divided by the length of the string). Returns 6 digit float.
     hamming = ("%.6f" % (agreements / len(zipped) *100))
     return hamming
-    
+   
 # Use dictionary to call the functions
 select= {
     'jaccard': jaccard_similarity_coefficient,
