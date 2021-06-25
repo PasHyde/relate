@@ -4,8 +4,8 @@ from relate import shingle
 import sys
 
 '''
-Functions return a similarity value between a pair of strings (texts) using three different string similarity metrics:
-Jaccard similarity coefficient, Sørensen_Dice, and Overlap coefficient.
+Functions return a similarity value between a pair of strings (texts) using four different string similarity metrics:
+Jaccard similarity coefficient, Sørensen_Dice, Overlap coefficient and Hamming. 
 '''
 # Call tokenize function to shingle the strings
 shingle = shingle.tokenize
