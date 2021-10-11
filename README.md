@@ -1,6 +1,6 @@
 # relate
 
-Relate is an open-source python package to estimate the similarities between strings (texts) using character- and token-based string similarity metrics. It takes a plain text file as input and returns a symmetric matrix that can be used for hierarchical clustering, phylogenetic or network analysis to investigate the relationships between different versions of a text.
+Relate is an open-source python package to estimate the similarities between strings (texts) using character- or token-based string similarity metrics. It takes a plain text file as input and returns a symmetric matrix that can be used for hierarchical clustering, phylogenetic or network analysis to investigate the relationships between different versions of a text.
 
 The modules included in relate can be used together or separately.
 
@@ -8,9 +8,9 @@ The shingle module divides or tokenizes the texts into shingles of character or 
 
 ```python
 from relate import shingle
-# Choose the shingle length 
+# User selects the shingle length 
 shingle.length = 2
-# Choose the shingle type: 'letters' or 'words'
+# User selects the shingle type: 'letters' or 'words'
 shingle = shingle.select['letters']
 text = 'a fox jumps' 
 print(shingle(text))
@@ -24,17 +24,17 @@ print(shingle(text))
 ['a fox', 'fox jumps']
 ```
 
-The similarity between pairs of texts is estimated by using character-based string metrics Levenshtein and Hamming similarity and token-based string metrics Jaccard similarity coefficient, Sorensen-Dice, and Overlap coefficient. Character-based metrics estimates the similarities directly from strings without using the shingling module. When applying the token-based methods, the shingling module is used, converting each string as a set and the shingles as elements of that set. For more information about the used string metrics, see [here](https://en.wikipedia.org/wiki/String_metric).
+The similarity between pairs of texts is estimated by using character-based string metrics Levenshtein and Hamming similarity or token-based string metrics Jaccard similarity coefficient, Sorensen-Dice, and Overlap coefficient. Character-based metrics estimates the similarities directly from strings without using the shingling module. When applying the token-based methods, the shingling module is used, converting each string as a set and the shingles as elements of that set. For more information about the used string metrics, see [here](https://en.wikipedia.org/wiki/String_metric).
 
 ```python
-from relate import shingle, metrics
-shingle.length = 2
+# An example of using the character-based metrics
+from relate import metrics
 text_1 = 'the fox jumps'
 text_2 = 'the fox waits'
-# User selects the preferable metrics from three options: 'jaccard', 'sorensen_dice', 'overlap'
-similarity = metrics.select['sorensen_dice']
-print(similarity(text_1, text_2))
-58.333333
+# User selects preferable character-based metrics from two options: 'levenshtein', 'hamming'
+measure = metrics.select['levenshtein']
+print(measure(text_1, text_2))
+69.23076923076923
 ```
 
 The matrix module automatically arranges the estimated values as a symmetric matrix. The plain text files can be opened and arranged using the data_file module. All punctuation marks and capitals should be removed from the texts and the pronunciation standardized. The data should be arranged into the data_file module as following: 
