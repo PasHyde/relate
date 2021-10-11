@@ -1,6 +1,6 @@
 # relate
 
-Relate is an open-source python package to estimate the similarities between strings (texts) using character- or token-based string similarity metrics. It takes a plain text file as input and returns a symmetric matrix that can be used for hierarchical clustering, phylogenetic or network analysis to investigate the relationships between different versions of a text.
+Relate is an open-source python package to estimate the similarities between strings (texts) using character- or token-based string similarity metrics. It takes a plain text file as input and returns a symmetric matrix of pairwise distances between the strings. This can be used for hierarchical clustering, phylogenetic or network analysis to investigate the relationships between different versions of a text.
 
 The modules included in relate can be used together or separately.
 
@@ -23,7 +23,7 @@ print(shingle(text))
 ['a fox', 'fox jumps']
 ```
 
-The similarity between pairs of texts is estimated by using character-based string metrics Levenshtein and Hamming similarity or token-based string metrics Jaccard similarity coefficient, Sorensen-Dice, and Overlap coefficient. Character-based metrics estimates the similarities directly from strings without using the shingling module. When applying the token-based methods, the shingling module is used, converting each string into a set and the shingles to elements of that set. For more information about the used string metrics, see [here](https://en.wikipedia.org/wiki/String_metric).
+The similarity between pairs of strings is estimated by using character-based string metrics Levenshtein and Hamming similarity or token-based string metrics Jaccard similarity coefficient, Sorensen-Dice, and Overlap coefficient. Character-based metrics estimates the similarities directly from strings without using the shingling module. When applying the token-based methods, the shingling module is used, converting each string into a set and the shingles to elements of that set. For more information about the used string metrics, see [here](https://en.wikipedia.org/wiki/String_metric).
 
 ```python
 # An example of using the character-based metrics
@@ -48,7 +48,7 @@ measure = metrics.select['sorensen_dice']
 print(measure(text_1, text_2))
 58.333333
 ```
-The matrix module automatically arranges the estimated values as a symmetric matrix. The plain text files can be opened and arranged using the data_file module. All punctuation marks and capitals should be removed from the texts and the pronunciation standardized. The data should be arranged into the data_file module as following: 
+The matrix module automatically arranges the estimated values into a symmetric matrix. The plain text files can be opened and arranged using the data_file module. All punctuation marks and capitals should be removed from the texts and the pronunciation standardized. The data should be arranged into the data_file module as following: 
 
 ```python
 text_1 = 'the fox jumps'
@@ -65,13 +65,12 @@ names = ('text_1','text_2','text_3','text_4')
 The module returns a similarity matrix (values taken directly from the string metrics), a distance matrix (1-string metric) with or without standardizing function:
 ![image](https://user-images.githubusercontent.com/79587588/114005450-38afd400-9868-11eb-97ff-dca35310751a.png) 
 estimated value - mean / standard deviation
-
 ```python
 from relate import shingle, metrics, matrix, data_file
 texts1 = data_file.all_texts1
 texts2 = data_file.all_texts2
 shingle.length = 2
-similarity = metrics.select['sørensen_dice']
+similarity = metrics.select['sorensen_dice']
 # Without standardizing function: 'similarity','distance'. With the function: 'st_similarity', 'st_distance' 
 matrix = matrix.select['distance']
 result = matrix(similarity,texts1, texts2)
