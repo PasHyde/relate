@@ -4,7 +4,7 @@ Relate is an open-source python package to estimate the similarities between str
 
 The modules included in relate can be used together or separately.
 
-The shingle module divides or tokenizes the texts into shingles of character or word length k, specified by a user. More about the shingling method, see [here](https://en.wikipedia.org/wiki/W-shingling).
+The shingle module divides or tokenizes the texts into shingles of character or word length k, specified by a user. For more information about the shingling method, see [here](https://en.wikipedia.org/wiki/W-shingling).
 
 ```python
 from relate import shingle
