@@ -58,9 +58,9 @@ def sorensen_dice(string_a, string_b):
     intersection = len(set(shingle(string_a)) & set(shingle(string_b)))
     # Calculate the sum of the number of elements in each sets
     sum_of_elements = len(set(shingle(string_a))) + len(set(shingle(string_b)))
-    # Return 6 digit float ranging between 0-100 (Sørensen-Dice coefficient ranges between 0-1 by default)
-    sørensen_dice_coefficient = ("%.6f" % ((intersection *2 / sum_of_elements) * 100))
-    return sørensen_dice_coefficient
+    # Return 6 digit float ranging between 0-100 (Sorensen-Dice coefficient ranges between 0-1 by default)
+    sorensen_dice_coefficient = ("%.6f" % ((intersection *2 / sum_of_elements) * 100))
+    return sorensen_dice_coefficient
         
 
 
