@@ -2,7 +2,7 @@
 
 from relate import shingle
 import sys
-
+from polyleven import levenshtein
 
 '''
 Functions return a similarity value between a pair of strings (texts) using four different string similarity metrics:
@@ -117,11 +117,40 @@ def hamming_similarity(string_a, string_b):
     # Calculate the hamming distance (agreements divided by the length of the string). Returns 6 digit float.
     hamming = ("%.6f" % (agreements / len(zipped) *100))
     return hamming
+
+def levenshtein_similarity(string_a, string_b):
+    '''
+    Function returns the Levenshtein similarity between two strings.
+
+    Levenshtein distance is defined as the smallest number of edit operations (insertion, deletion, and substitution)
+    required to transform one string into another.
+    string_a = 'the fast brown fox'
+    string_b = 'the slow brown fox'
+    Levenshtein distance = 4
+
+    This is converted into a similarity value by using the following formula:
+    1-levenshtein distance/max(string1, string2)
+    levenshtein_similarity = 1- 4/18 = 0.778
+
+    Parameters:
+    string_a : first string (text)
+    string_b : second string (text)
+
+    Returns:
+    float: levenshtein_similarity * 100
+    '''
+    # Calculate the Levenshtein distance using polyleven (Myers algorithm)
+    levenshtein_distance = levenshtein(string_a, string_b)
+    # Calculate the Levenshtein similarity
+    levenshtein_sim = (1-levenshtein_distance/max(len(string_a), len(string_b)))*100
+    return levenshtein_sim
+    
     
 # Use dictionary to call the functions
 select= {
     'jaccard': jaccard_similarity_coefficient,
     'sorensen_dice': sorensen_dice,
     'overlap': overlap_coefficient,
-    'hamming': hamming_similarity
+    'hamming': hamming_similarity,
+    'levenshtein': levenshtein_similarity
     }
