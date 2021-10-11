@@ -61,7 +61,6 @@ all_texts2 = (text_1,text_2,text_3,text_4)
 # Names or IDs of the analyzed texts
 names = ('text_1','text_2','text_3','text_4')
 ```
-
 The module returns a similarity matrix (values taken directly from the string metrics), a distance matrix (1-string metric) with or without standardizing function:
 ![image](https://user-images.githubusercontent.com/79587588/114005450-38afd400-9868-11eb-97ff-dca35310751a.png) 
 estimated value - mean / standard deviation
@@ -70,10 +69,10 @@ from relate import shingle, metrics, matrix, data_file
 texts1 = data_file.all_texts1
 texts2 = data_file.all_texts2
 shingle.length = 2
-similarity = metrics.select['sorensen_dice']
+measure = metrics.select['sorensen_dice']
 # Without standardizing function: 'similarity','distance'. With the function: 'st_similarity', 'st_distance' 
 matrix = matrix.select['distance']
-result = matrix(similarity,texts1, texts2)
+result = matrix(measure,texts1, texts2)
 print(result)
             text_1     text_2     text_3     text_4
 text_1   0.000000  41.666667  16.666667  70.370370
