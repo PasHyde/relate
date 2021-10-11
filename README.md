@@ -24,15 +24,15 @@ print(shingle(text))
 ['a fox', 'fox jumps']
 ```
 
-The metrics module treats each text as a set and the shingles as elements of a set. The similarity between the pairs of texts is estimated by using string metrics: Jaccard similarity coefficient, Sørensen_Dice, or Overlap coefficient. For more information about the used string metrics, see [here](https://effectivesoftwaredesign.com/2019/02/27/data-science-set-similarity-metrics/).
+The similarity between the pairs of texts is estimated by using character-based string metrics Levenshtein and Hamming similarity and token-based string metrics Jaccard similarity coefficient, Sorensen_Dice, and Overlap coefficient. When using the token-based methods, the metrics module treats each text as a set and the shingles as elements of a set. For more information about the used string metrics, see [here](https://effectivesoftwaredesign.com/2019/02/27/data-science-set-similarity-metrics/).
 
 ```python
 from relate import shingle, metrics
 shingle.length = 2
 text_1 = 'the fox jumps'
 text_2 = 'the fox waits'
-# User selects the preferable metrics from three options: 'jaccard', 'sørensen_dice', 'overlap'
-similarity = metrics.select['sørensen_dice']
+# User selects the preferable metrics from three options: 'jaccard', 'sorensen_dice', 'overlap'
+similarity = metrics.select['sorensen_dice']
 print(similarity(text_1, text_2))
 58.333333
 ```
