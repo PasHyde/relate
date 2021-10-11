@@ -24,7 +24,7 @@ print(shingle(text))
 ['a fox', 'fox jumps']
 ```
 
-The similarity between the pairs of texts is estimated by using character-based string metrics Levenshtein and Hamming similarity and token-based string metrics Jaccard similarity coefficient, Sorensen_Dice, and Overlap coefficient. When using the token-based methods, the metrics module treats each text as a set and the shingles as elements of a set. For more information about the used string metrics, see [here](https://en.wikipedia.org/wiki/String_metric).
+The similarity between the pairs of texts is estimated by using character-based string metrics Levenshtein and Hamming similarity and token-based string metrics Jaccard similarity coefficient, Sorensen_Dice, and Overlap coefficient. Character-based metrics estimates the similarities directly from strings without using the shingling module. When applying the token-based methods, the shingling module is used, converting each string as a set and the shingles as elements of that set. For more information about the used string metrics, see [here](https://en.wikipedia.org/wiki/String_metric).
 
 ```python
 from relate import shingle, metrics
