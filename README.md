@@ -1,6 +1,6 @@
 # relate
 
-Relate is an open-source python package to estimate the similarities between strings (texts) using character- or token-based string similarity metrics. It takes a plain text file as input and returns a symmetric matrix that can be used for hierarchical clustering, phylogenetic or network analysis to investigate quantitative relationships between different versions of a text.
+Relate is an open-source python package to estimate the similarities between strings (texts) using character- and token-based string similarity metrics. It takes a plain text file as input and returns a symmetric matrix that can be used for hierarchical clustering, phylogenetic or network analysis to investigate the relationships between different versions of a text.
 
 The modules included in relate can be used together or separately.
 
@@ -8,13 +8,18 @@ The shingle module divides or tokenizes the texts into shingles of character or 
 
 ```python
 from relate import shingle
-# Choose the length of the shingles
+# Choose the shingle length 
 shingle.length = 2
 # Choose the shingle type: 'letters' or 'words'
 shingle = shingle.select['letters']
 text = 'a fox jumps' 
 print(shingle(text))
 ['th', 'he', 'e ', ' f', 'fo', 'ox', 'x ', ' j', 'ju', 'um', 'mp', 'ps']
+```
+or 
+```python
+shingle = shingle.select['words']
+['a fox', 'fox jumps']
 ```
 
 The metrics module treats each text as a set and the shingles as elements of a set. The similarity between the pairs of texts is estimated by using string metrics: Jaccard similarity coefficient, Sørensen_Dice, or Overlap coefficient. For more information about the used string metrics, see [here](https://effectivesoftwaredesign.com/2019/02/27/data-science-set-similarity-metrics/).
