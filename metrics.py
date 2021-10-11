@@ -3,18 +3,20 @@
 from relate import shingle
 import sys
 
+
 '''
 Functions return a similarity value between a pair of strings (texts) using four different string similarity metrics:
-Jaccard similarity coefficient, Sørensen_Dice, Overlap coefficient and Hamming. 
+Jaccard similarity coefficient, Sorensen_Dice, Overlap coefficient and Hamming.
 '''
-# Call tokenize function to shingle the strings
-shingle = shingle.tokenize
+# Call shingle functions to tokenize the strings
+shingle = shingle.select['letters']
+
 
 def jaccard_similarity_coefficient(string_a, string_b):
     '''
     Function returns the Jaccard similarity coefficient between two strings.
 
-    Texts are divided (tokenized) into shingles of character length k (default shingle.length = 4) and treated as elements of a set.
+    Texts are divided (tokenized) into shingles of character length k (default shingle.length = 3) and treated as elements of a set.
     The tokenized strings are converted to sets and the Jaccard similarity coefficient calculated:
     (intersection / union == shingles shared between sets / number of shingles in both sets).
 
@@ -35,12 +37,12 @@ def jaccard_similarity_coefficient(string_a, string_b):
     return jaccard_similarity
 
 
-def sørensen_dice(string_a, string_b):
+def sorensen_dice(string_a, string_b):
     '''
-    Function returns the Sørensen–Dice coefficient between two strings.
+    Function returns the Sorensen–Dice coefficient between two strings.
 
-    Texts are divided (tokenized) into shingles of character length k (default shingle.length = 4) and treated as elements of a set.
-    The tokenized strings are converted to sets and the Sørensen–Dice coefficient calculated:
+    Texts are divided (tokenized) into shingles of character length k (default shingle.length = 3) and treated as elements of a set.
+    The tokenized strings are converted to sets and the Sorensen–Dice coefficient calculated:
     (intersection *2 / sum of the number of elements in each set ==
     shingles shared between sets x 2 / sum of the number of shingles in each set).
 
@@ -49,7 +51,7 @@ def sørensen_dice(string_a, string_b):
     string_b : second string (text)
 
     Returns:
-    float: Sørensen–Dice coefficient * 100
+    float: Sorensen–Dice coefficient * 100
     
     '''
     # Calculate intersection (& operator) = the number of shingles shared between sets
@@ -66,7 +68,7 @@ def overlap_coefficient(string_a, string_b):
     '''
     Function returns the overlap coefficient between two strings.
 
-    Texts are divided (tokenized) into shingles of character length k (default shingle.length = 4) and treated as elements of a set.
+    Texts are divided (tokenized) into shingles of character length k (default shingle.length = 3) and treated as elements of a set.
     The tokenized strings are converted to sets and the overlap coefficient calculated:
     (intersection / number of elements in the smaller set == shingles shared between sets /
     number of shingles in the smaller set).
@@ -115,11 +117,11 @@ def hamming_similarity(string_a, string_b):
     # Calculate the hamming distance (agreements divided by the length of the string). Returns 6 digit float.
     hamming = ("%.6f" % (agreements / len(zipped) *100))
     return hamming
-   
+    
 # Use dictionary to call the functions
 select= {
     'jaccard': jaccard_similarity_coefficient,
-    'sørensen_dice': sørensen_dice,
+    'sorensen_dice': sorensen_dice,
     'overlap': overlap_coefficient,
     'hamming': hamming_similarity
     }
