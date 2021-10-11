@@ -8,9 +8,9 @@ The shingle module divides or tokenizes the texts into shingles of character or 
 
 ```python
 from relate import shingle
-# User selects the shingle length 
+# Select the shingle length 
 shingle.length = 2
-# User selects the shingle type: 'letters' or 'words'
+# Select the shingle type: 'letters' or 'words'
 shingle = shingle.select['letters']
 text = 'a fox jumps' 
 print(shingle(text))
@@ -19,24 +19,35 @@ print(shingle(text))
 or 
 ```python
 shingle = shingle.select['words']
-text = 'a fox jumps' 
 print(shingle(text))
 ['a fox', 'fox jumps']
 ```
 
-The similarity between pairs of texts is estimated by using character-based string metrics Levenshtein and Hamming similarity or token-based string metrics Jaccard similarity coefficient, Sorensen-Dice, and Overlap coefficient. Character-based metrics estimates the similarities directly from strings without using the shingling module. When applying the token-based methods, the shingling module is used, converting each string as a set and the shingles as elements of that set. For more information about the used string metrics, see [here](https://en.wikipedia.org/wiki/String_metric).
+The similarity between pairs of texts is estimated by using character-based string metrics Levenshtein and Hamming similarity or token-based string metrics Jaccard similarity coefficient, Sorensen-Dice, and Overlap coefficient. Character-based metrics estimates the similarities directly from strings without using the shingling module. When applying the token-based methods, the shingling module is used, converting each string into a set and the shingles to elements of that set. For more information about the used string metrics, see [here](https://en.wikipedia.org/wiki/String_metric).
 
 ```python
 # An example of using the character-based metrics
 from relate import metrics
 text_1 = 'the fox jumps'
 text_2 = 'the fox waits'
-# User selects preferable character-based metrics from two options: 'levenshtein', 'hamming'
+# Select preferable character-based metrics from two options: 'levenshtein', 'hamming'
 measure = metrics.select['levenshtein']
 print(measure(text_1, text_2))
 69.23076923076923
 ```
-
+or 
+```python
+# An example of using the token-based metrics
+from relate import shingle, metrics
+# Select the shingle length 
+shingle.length = 2
+# Select the shingle type: 'letters' or 'words'
+metrics.shingle = shingle.select['letters']
+# Select preferable token-based metrics from three options: 'jaccard', 'overlap', 'sorensen_dice'
+measure = metrics.select['sorensen_dice']
+print(measure(text_1, text_2))
+58.333333
+```
 The matrix module automatically arranges the estimated values as a symmetric matrix. The plain text files can be opened and arranged using the data_file module. All punctuation marks and capitals should be removed from the texts and the pronunciation standardized. The data should be arranged into the data_file module as following: 
 
 ```python
