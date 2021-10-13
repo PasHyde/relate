@@ -28,11 +28,11 @@ The similarity between pairs of strings is estimated by using character-based st
 ```python
 # An example of using the character-based metrics
 from relate import metrics
-text_1 = 'the fox jumps'
-text_2 = 'the fox waits'
+text1 = 'the fox jumps'
+text2 = 'the fox waits'
 # Select preferable character-based metrics from two options: 'levenshtein', 'hamming'
 measure = metrics.select['levenshtein']
-print(measure(text_1, text_2))
+print(measure(text1, text2))
 69.23076923076923
 ```
 or 
