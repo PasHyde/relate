@@ -48,29 +48,31 @@ measure = metrics.select['sorensen_dice']
 print(measure(text_1, text_2))
 58.333333
 ```
-The matrix module automatically arranges the estimated values into a symmetric matrix. The plain text files can be opened and arranged using the data_file module. All punctuation marks and capitals should be removed from the texts and the pronunciation standardized. The data should be arranged into the data_file module as following: 
+The matrix module automatically arranges the estimated values into a symmetric matrix. All punctuation marks and capitals should be removed from the texts and the pronunciation standardized. The data should be arranged as following:
 
 ```python
-text_1 = 'the fox jumps'
-text_2 = 'the fox waits'
-text_3 = 'one fox jumps'
-text_4 = 'second fox waits'
+text1 = 'the fox jumps'
+text2 = 'the fox waits'
+text3 = 'one fox jumps'
+text4 = 'second fox waits'
 # Arrange all texts into two tuples:
-all_texts1 = (text_1,text_2,text_3,text_4)
-all_texts2 = (text_1,text_2,text_3,text_4)
+texts1 = (text1,text2,text3,text4)
+texts2 = (text1,text2,text3,text4)
 # Names or IDs of the analyzed texts
-names = ('text_1','text_2','text_3','text_4')
+matrix.names = ('text1','text2','text3','text4')
 ```
 The module returns a similarity matrix (values taken directly from the string metrics), a distance matrix (1-string metric) with or without standardizing function:
 ![image](https://user-images.githubusercontent.com/79587588/114005450-38afd400-9868-11eb-97ff-dca35310751a.png) 
 estimated value - mean / standard deviation
 ```python
-from relate import shingle, metrics, matrix, data_file
-texts1 = data_file.all_texts1
-texts2 = data_file.all_texts2
+from relate import shingle, metrics, matrix
+# Select the shingle length
 shingle.length = 2
+# Select the shingle type
+metrics.shingle = shingle.select['letters']
+# Select used similarity metrics
 measure = metrics.select['sorensen_dice']
-# Without standardizing function: 'similarity','distance'. With the function: 'st_similarity', 'st_distance' 
+# Select the type of values used in the matrix: 'similarity', 'distance', 'st_similarity', 'st_distance'.
 matrix = matrix.select['distance']
 result = matrix(measure,texts1, texts2)
 print(result)
@@ -79,7 +81,6 @@ text_1   0.000000  41.666667  16.666667  70.370370
 text_2  41.666667   0.000000  58.333333  33.333333
 text_3  16.666667  58.333333   0.000000  62.962963
 text_4  70.370370  33.333333  62.962963   0.000000
-
 ```
 Symmetric matrix organizes and visualizes the data in a clear manner. However, one may wish to manipulate the output. For instance, some require the upper half of the matrix only:
 
