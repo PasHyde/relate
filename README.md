@@ -20,7 +20,7 @@ or
 ```python
 shingle = shingle.select['words']
 print(shingle(text))
-['a fox', 'fox jumps']
+['the fox', 'fox jumps']
 ```
 
 The similarity between pairs of strings is estimated by using character-based string metrics Levenshtein and Hamming similarity or token-based string metrics Jaccard similarity coefficient, Sorensen-Dice, and Overlap coefficient. Character-based metrics estimates the similarities directly from strings without using the shingling module. When applying the token-based methods, the shingling module is used, converting each string into a set and the shingles to elements of that set. For more information about the used string metrics, see [here](https://en.wikipedia.org/wiki/String_metric).
