@@ -45,7 +45,7 @@ shingle.length = 2
 metrics.shingle = shingle.select['letters']
 # Select preferable token-based metrics from three options: 'jaccard', 'overlap', 'sorensen_dice'
 measure = metrics.select['sorensen_dice']
-print(measure(text_1, text_2))
+print(measure(text1, text2))
 58.333333
 ```
 The matrix module automatically arranges the estimated values into a symmetric matrix. All punctuation marks and capitals should be removed from the texts and the pronunciation standardized. The data should be arranged as following:
