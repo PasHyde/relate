@@ -12,7 +12,7 @@ from relate import shingle
 shingle.length = 2
 # Select the shingle type: 'letters' or 'words'
 shingle = shingle.select['letters']
-text = 'a fox jumps' 
+text = 'the fox jumps' 
 print(shingle(text))
 ['th', 'he', 'e ', ' f', 'fo', 'ox', 'x ', ' j', 'ju', 'um', 'mp', 'ps']
 ```
