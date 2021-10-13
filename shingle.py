@@ -1,15 +1,15 @@
 
 # Assign  length of the shingles
-length = 3
+length = 2
 
 def shingle_letters(string):
     '''Function to divide a string (text) into shingles.
 
     The string is divided (tokenized) into smaller units called shingles of
-    character length k (default length = 3). These partially overlaps
+    character length k (default length = 2). These partially overlaps
     to one another. The last characters (shingle length -1) are ignored.
 
-    string = 'a fox jumps' --> shingle_letters(string) --> ['the ', 'he f', 'e fo', ' fox', 'fox ', 'ox j', 'x ju', ' jum', 'jump', 'umps']
+    string = 'the fox jumps' --> shingle_letters(string) --> ['th', 'he', 'e ', ' f', 'fo', 'ox', 'x ', ' j', 'ju', 'um', 'mp', 'ps']
 
     Parameters:
     string : a text
@@ -25,10 +25,10 @@ def shingle_words(string):
     '''Function to divide a string (text) into shingles.
 
     The string is divided (tokenized) into smaller units called shingles of
-    word length k (default length = 3). These partially overlaps
+    word length k (default length = 2). These partially overlaps
     to one another. The last word (shingle length -1) are ignored.
 
-    string = 'a brown fox jumps high' --> shingle_words(string) --> ['a brown fox', 'brown fox jumps', 'fox jumps high' ]
+    string = 'a brown fox jumps high' --> shingle_words(string) --> ['a brown', 'brown fox', 'fox jumps', 'jumps high']
 
     Parameters:
     string : a text
