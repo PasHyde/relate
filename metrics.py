@@ -4,8 +4,8 @@ import sys
 from polyleven import levenshtein
 
 '''
-Functions return a similarity value between a pair of strings (texts) using four different string similarity metrics:
-Jaccard similarity coefficient, Sorensen_Dice, Overlap coefficient and Hamming.
+Functions return a similarity value between a pair of strings (texts) using three token-based string similarity metrics:
+Jaccard similarity coefficient, Sorensen-Dice with Overlap coefficient, and two character-based metrics: Hamming and Levenshtein similarity
 '''
 # Call shingle functions to tokenize the strings
 shingle = shingle.select['letters']
@@ -13,11 +13,11 @@ shingle = shingle.select['letters']
 
 def jaccard_similarity_coefficient(string_a, string_b):
     '''
-    Function returns the Jaccard similarity coefficient between two strings.
+    Function returns Jaccard similarity coefficient between two strings
 
-    Texts are divided (tokenized) into shingles of character length k (default shingle.length = 3) and treated as elements of a set.
+    Strings are divided (tokenized) into shingles of character or word length k (default shingle.length = 2) and treated as elements of a set.
     The tokenized strings are converted to sets and the Jaccard similarity coefficient calculated:
-    (intersection / union == shingles shared between sets / number of shingles in both sets).
+    (intersection / union == shingles shared between sets / number of shingles in both sets)
 
     Parameters:
     string_a : first string (text)
@@ -31,19 +31,19 @@ def jaccard_similarity_coefficient(string_a, string_b):
     intersection = len(set(shingle(string_a)) & set(shingle(string_b)))
     # Calculate union (| operator) == number of shingles in both sets
     union = len(set(shingle(string_a)) | set(shingle(string_b)))
-    # Return 6 digit float ranging between 0-100 (Jaccard similarity ranges between 0-1 by default)
+    # Return float ranging between 0-100 (Jaccard similarity ranges between 0-1 by default)
     jaccard_similarity = ((intersection / union) * 100)
     return jaccard_similarity
 
 
 def sorensen_dice(string_a, string_b):
     '''
-    Function returns the Sorensen–Dice coefficient between two strings.
+    Function returns Sorensen–Dice coefficient between two strings
 
-    Texts are divided (tokenized) into shingles of character length k (default shingle.length = 3) and treated as elements of a set.
+    Strings are divided (tokenized) into shingles of character or word length k (default shingle.length = 2) and treated as elements of a set.
     The tokenized strings are converted to sets and the Sorensen–Dice coefficient calculated:
     (intersection *2 / sum of the number of elements in each set ==
-    shingles shared between sets x 2 / sum of the number of shingles in each set).
+    shingles shared between sets x 2 / sum of the number of shingles in each set)
 
     Parameters:
     string_a : first string (text)
@@ -57,7 +57,7 @@ def sorensen_dice(string_a, string_b):
     intersection = len(set(shingle(string_a)) & set(shingle(string_b)))
     # Calculate the sum of the number of elements in each sets
     sum_of_elements = len(set(shingle(string_a))) + len(set(shingle(string_b)))
-    # Return 6 digit float ranging between 0-100 (Sorensen-Dice coefficient ranges between 0-1 by default)
+    # Return float ranging between 0-100 (Sorensen-Dice coefficient ranges between 0-1 by default)
     sorensen_dice_coefficient = ((intersection *2 / sum_of_elements) * 100)
     return sorensen_dice_coefficient
         
@@ -65,12 +65,12 @@ def sorensen_dice(string_a, string_b):
 
 def overlap_coefficient(string_a, string_b):
     '''
-    Function returns the overlap coefficient between two strings.
+    Function returns Overlap coefficient between two strings
 
-    Texts are divided (tokenized) into shingles of character length k (default shingle.length = 3) and treated as elements of a set.
+    Strings are divided (tokenized) into shingles of character or word length k (default shingle.length = 2) and treated as elements of a set.
     The tokenized strings are converted to sets and the overlap coefficient calculated:
     (intersection / number of elements in the smaller set == shingles shared between sets /
-    number of shingles in the smaller set).
+    number of shingles in the smaller set)
 
     Parameters:
     string_a : first string (text)
@@ -83,14 +83,14 @@ def overlap_coefficient(string_a, string_b):
     intersection = len(set(shingle(string_a)) & set(shingle(string_b)))
     # Return the smaller number of the two sets
     smaller_set = min(len(set(shingle(string_a))), len(set(shingle(string_b))))
-    # Return 6 digit float ranging between 0-100 (overlap coefficient ranges between 0-1 by default)
+    # Return float ranging between 0-100 (overlap coefficient ranges between 0-1 by default)
     overlap_coefficient_similarity = ((intersection / smaller_set) * 100)
     return overlap_coefficient_similarity
     
 
 def hamming_similarity(string_a, string_b):
     '''
-    Function returns the Hamming similarity between two strings.
+    Function returns the Hamming similarity between two strings
     
     Hamming similarity between two equal-length strings is the number of positions at which the corresponding characters are the same. For example:
     string_a = 'manuscript'
@@ -102,18 +102,18 @@ def hamming_similarity(string_a, string_b):
     string_b : second string (text)
 
     Returns:
-    float: hamming_similarity / number of characters in either strings * 100 = hamming_similarity in %.
+    float: hamming_similarity / number of characters in either strings * 100 = hamming_similarity in %
     '''
     # Check whether the strings are of egual length
     [a if len(string_a) == len(string_b) else sys.exit("error: strings must be of equal length") for a in (string_a, string_b)]
     # Pair each character together from the two strings
     zipped = list(zip(string_a, string_b))
-    # Ignore quoestion marks and the character that are paired with it (a user can insert here whatever characters or symbols one wishes to ignore from the strings)
+    # Ignore question marks and the character that are paired with it (a user can insert here whatever characters or symbols one wishes to ignore from the strings)
     ignore = '?'
     [[zipped.remove(subl) for m in ignore if m in subl]for subl in zipped[:]]
     # Sum up all the characters that are the same in both strings (agreements)
     agreements = sum(x == y for x, y in zipped)
-    # Calculate the hamming distance (agreements divided by the length of the string). Returns 6 digit float.
+    # Calculate the hamming similarity (agreements divided by the length of the string)
     hamming = ((agreements / len(zipped)) *100)
     return hamming
 
@@ -129,7 +129,7 @@ def levenshtein_similarity(string_a, string_b):
 
     This is converted into a similarity value by using the following formula:
     1-levenshtein distance/max(string1, string2)
-    levenshtein_similarity = 1- 4/18 = 0.778
+    levenshtein_similarity = 1 - 4/18 = 0.778
 
     Parameters:
     string_a : first string (text)
