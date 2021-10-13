@@ -90,7 +90,7 @@ def overlap_coefficient(string_a, string_b):
 
 def hamming_similarity(string_a, string_b):
     '''
-    Function returns the Hamming similarity between two strings
+    Function returns Hamming similarity between two strings
     
     Hamming similarity between two equal-length strings is the number of positions at which the corresponding characters are the same. For example:
     string_a = 'manuscript'
@@ -119,7 +119,7 @@ def hamming_similarity(string_a, string_b):
 
 def levenshtein_similarity(string_a, string_b):
     '''
-    Function returns the Levenshtein similarity between two strings.
+    Function returns Levenshtein similarity between two strings.
 
     Levenshtein distance is defined as the smallest number of edit operations (insertion, deletion, and substitution)
     required to transform one string into another.
