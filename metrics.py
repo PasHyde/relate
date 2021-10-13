@@ -1,5 +1,4 @@
 
-
 from relate import shingle
 import sys
 from polyleven import levenshtein
@@ -33,7 +32,7 @@ def jaccard_similarity_coefficient(string_a, string_b):
     # Calculate union (| operator) == number of shingles in both sets
     union = len(set(shingle(string_a)) | set(shingle(string_b)))
     # Return 6 digit float ranging between 0-100 (Jaccard similarity ranges between 0-1 by default)
-    jaccard_similarity = ("%.6f" % ((intersection / union) * 100))
+    jaccard_similarity = ((intersection / union) * 100)
     return jaccard_similarity
 
 
@@ -59,7 +58,7 @@ def sorensen_dice(string_a, string_b):
     # Calculate the sum of the number of elements in each sets
     sum_of_elements = len(set(shingle(string_a))) + len(set(shingle(string_b)))
     # Return 6 digit float ranging between 0-100 (Sorensen-Dice coefficient ranges between 0-1 by default)
-    sorensen_dice_coefficient = ("%.6f" % ((intersection *2 / sum_of_elements) * 100))
+    sorensen_dice_coefficient = ((intersection *2 / sum_of_elements) * 100)
     return sorensen_dice_coefficient
         
 
@@ -85,7 +84,7 @@ def overlap_coefficient(string_a, string_b):
     # Return the smaller number of the two sets
     smaller_set = min(len(set(shingle(string_a))), len(set(shingle(string_b))))
     # Return 6 digit float ranging between 0-100 (overlap coefficient ranges between 0-1 by default)
-    overlap_coefficient_similarity = ("%.6f" % ((intersection / smaller_set) * 100))
+    overlap_coefficient_similarity = ((intersection / smaller_set) * 100)
     return overlap_coefficient_similarity
     
 
@@ -115,7 +114,7 @@ def hamming_similarity(string_a, string_b):
     # Sum up all the characters that are the same in both strings (agreements)
     agreements = sum(x == y for x, y in zipped)
     # Calculate the hamming distance (agreements divided by the length of the string). Returns 6 digit float.
-    hamming = ("%.6f" % (agreements / len(zipped) *100))
+    hamming = ((agreements / len(zipped)) *100)
     return hamming
 
 def levenshtein_similarity(string_a, string_b):
