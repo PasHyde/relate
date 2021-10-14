@@ -1,6 +1,6 @@
 # relate
 
-Relate is an open-source python package to estimate the similarities between strings (texts) using character- or token-based string similarity metrics. It takes a plain text file as input and returns a symmetric matrix of pairwise distances between the strings. This can be used for hierarchical clustering, phylogenetic or network analysis to investigate the relationships between different versions of a text.
+Relate is an open-source python package to estimate similarities between strings (texts) using character- or token-based string similarity metrics. It takes a plain text file as input and returns a symmetric matrix of pairwise distances between the strings. This can be used for hierarchical clustering, phylogenetic or network analysis to investigate the relationships between different versions of a text.
 
 The modules included in relate can be used together or separately.
 
@@ -23,7 +23,7 @@ print(shingle(text))
 ['the fox', 'fox jumps']
 ```
 
-The similarity between pairs of strings is estimated by using character-based string metrics Levenshtein and Hamming similarity or token-based string metrics Jaccard similarity coefficient, Sorensen-Dice, and Overlap coefficient. Character-based metrics estimates the similarities directly from strings without using the shingling module. When applying the token-based methods, the shingling module is used, converting each string into a set and the shingles to elements of that set. For more information about the used string metrics, see [here](https://en.wikipedia.org/wiki/String_metric).
+The similarity between pairs of strings is estimated by using character-based string metrics Levenshtein and Hamming similarity or token-based string metrics Jaccard similarity coefficient, Sorensen-Dice, and Overlap coefficient. Character-based metrics estimate the similarities directly from strings without using the shingling module. When applying the token-based methods, the shingling module is used, converting each string into a set and the shingles to elements of that set. For more information about the used string metrics, see [here](https://en.wikipedia.org/wiki/String_metric).
 
 ```python
 # An example of using the character-based metrics
