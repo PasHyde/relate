@@ -1,6 +1,6 @@
 # relate
 
-Relate is an open-source python package to estimate the similarities between strings (texts) using character- or token-based string similarity metrics. It takes a plain text file as input and returns a symmetric matrix of pairwise distances between the strings. This can be used for hierarchical clustering, phylogenetic or network analysis to investigate the relationships between different versions of a text.
+Relate is an open-source python package to estimate similarities between strings (texts) using character- or token-based string similarity metrics. It takes a plain text file as input and returns a symmetric matrix of pairwise distances between the strings. This can be used for hierarchical clustering, phylogenetic or network analysis to investigate the relationships between different versions of a text.
 
 The modules included in relate can be used together or separately.
 
