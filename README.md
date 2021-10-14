@@ -48,7 +48,7 @@ measure = metrics.select['sorensen_dice']
 print(measure(text1, text2))
 58.333333
 ```
-The matrix module automatically arranges the estimated values into a symmetric matrix. All punctuation marks and capitals should be removed from the texts and the pronunciation standardized. The data should be arranged as following:
+The matrixes module automatically arranges the estimated values into a symmetric matrix. All punctuation marks and capitals should be removed from the texts and the pronunciation standardized. The data should be arranged as following:
 
 ```python
 text1 = 'the fox jumps'
@@ -59,13 +59,13 @@ text4 = 'second fox waits'
 texts1 = (text1,text2,text3,text4)
 texts2 = (text1,text2,text3,text4)
 # Names or IDs of the analyzed texts
-matrix.names = ('text1','text2','text3','text4')
+matrixes.names = ('text1','text2','text3','text4')
 ```
 The module returns a similarity matrix (values taken directly from the string metrics), a distance matrix (1-string metric) with or without standardizing function:
 ![image](https://user-images.githubusercontent.com/79587588/114005450-38afd400-9868-11eb-97ff-dca35310751a.png) 
 estimated value - mean / standard deviation
 ```python
-from relate import shingle, metrics, matrix
+from relate import shingle, metrics, matrixes
 # Select the shingle length
 shingle.length = 2
 # Select the shingle type
@@ -73,7 +73,7 @@ metrics.shingle = shingle.select['letters']
 # Select used similarity metrics
 measure = metrics.select['sorensen_dice']
 # Select the type of values used in the matrix: 'similarity', 'distance', 'st_similarity', 'st_distance'.
-matrix = matrix.select['distance']
+matrix = matrixes.select['distance']
 result = matrix(measure,texts1, texts2)
 print(result)
             text_1     text_2     text_3     text_4
